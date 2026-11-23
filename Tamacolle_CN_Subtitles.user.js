@@ -1,10 +1,12 @@
 // ==UserScript==
 // @name         魂これ 中文字幕（Tamacolle CN Subtitles）
 // @namespace    https://nijitama.app/games/tamacolle/
-// @version      1.1.4
+// @version      1.1.5
 // @description  在《魂これ》网页版播放角色语音时叠加整条中文字幕；剧情/招募等原生对白界面默认不叠加。非官方，不修改游戏文件。
 // @author       DSH
-// @match        *://*/*
+// @match        https://nijitama.app/games/tamacolle/*
+// @match        https://*.nijitama.app/games/tamacolle/*
+// @match        https://tukitama.com/tamacolle/*
 // @grant        none
 // @run-at       document-start
 // @updateURL    https://raw.githubusercontent.com/yuanyichen09-afk/tamacolle-cn-subtitles/main/Tamacolle_CN_Subtitles.meta.js
@@ -45,10 +47,10 @@
   "count": 2538,
   "subtitle_count": 2538,
   "audio_subtitle_sha256": "92e69d7e69af6ec170e5745ffe8f9caf7f7f6d625d67f8e42de689a05a7f70b5",
-  "verification_note": "整条字幕。v1.1.4 的逐条依据与待复核项见随附审计文件。"
+  "verification_note": "整条字幕。v1.1.5 的逐条依据与待复核项见随附审计文件。"
 };
 
-  const VERSION = '1.1.4';
+  const VERSION = '1.1.5';
   const LOG = '[tamacolle-subs]';
   const MP3_IN_URL = /\/(v_[a-z0-9]+_\d+(?:_\d+)?)\.mp3(?:[?#]|$)/i;
   const BARE_VOICE = /^(?:.*\/)?(v_[a-z0-9]+_\d+(?:_\d+)?)(?:\.mp3)?$/i;
