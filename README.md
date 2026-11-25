@@ -2,12 +2,16 @@
 
 《魂これ》网页版的中文字幕用户脚本：播放角色语音时在游戏画面上叠加整条中文字幕，不改动游戏文件。
 
-- 当前版本：**v1.1.9**
+- 当前版本：**v1.2**
 - 字幕库：**2,608 条**（新增 28 条入浴字幕）
 - 战斗规则：队长出发、我方遇敌、释放拔魂技和战斗负伤（服装破损）时显示中文字幕。普通攻击、普通受击、寻宝和陷阱等照常播放语音。
 - 平时触摸、编队、庄园、购买等原有字幕规则不变。
 
 本仓库只包含三份发布材料：可安装的用户脚本、更新元数据、本说明。
+
+## v1.2 更新
+
+默认字幕字号从 20 px 调大到 23 px。沿用无黑框的黑色粗体样式，字幕继续整句显示。
 
 ## v1.1.9 更新
 
@@ -46,6 +50,7 @@ v1.1.4 曾把匹配规则改成 `@match *://*/*`，想让脚本出现在更多 S
 
 **https://raw.githubusercontent.com/yuanyichen09-afk/tamacolle-cn-subtitles/main/Tamacolle_CN_Subtitles.user.js**
 
+- [Fastly 备用安装链接](https://fastly.jsdelivr.net/gh/yuanyichen09-afk/tamacolle-cn-subtitles@main/Tamacolle_CN_Subtitles.user.js) 跟随主分支，CDN 缓存可能延迟同步。
 - 更新元数据（脚本管理器自动检查用）：
   https://raw.githubusercontent.com/yuanyichen09-afk/tamacolle-cn-subtitles/main/Tamacolle_CN_Subtitles.meta.js
 - 仓库主页：https://github.com/yuanyichen09-afk/tamacolle-cn-subtitles
@@ -88,18 +93,18 @@ v1.1.4 曾把匹配规则改成 `@match *://*/*`，想让脚本出现在更多 S
 
 ## 自动更新说明
 
-- 脚本头部含 `@updateURL`（指向 `.meta.js`）和 `@downloadURL`（指向 `.user.js`），两者与实际仓库 Raw 地址一致，v1.1.9 继续沿用。
+- 脚本头部含 `@updateURL`（指向 `.meta.js`）和 `@downloadURL`（指向 `.user.js`），两者与实际仓库 Raw 地址一致，v1.2 继续沿用。
 - **Tampermonkey**（电脑 / 安卓）：默认约每 12 小时检查一次更新，可在「设置 → 更新」里调整或关闭。想立刻拿到新版：打开 Tampermonkey 面板 → 「已安装脚本」→ 该脚本 → 「检查更新」（或面板里的「检查脚本更新」）。
 - **Userscripts（iOS/iPadOS）**：iOS 不允许后台常驻，更新通常在打开 Userscripts 扩展界面时（或手动下拉刷新脚本列表）才检查；不会像电脑那样定时静默更新。若扩展内提示有更新，点一下确认即可。
 - 如果某端只弹出「有可用更新」提示而不自动装：按提示手动确认一次即可，这属于该扩展的保守策略，不是脚本问题。
-- 想核对版本：脚本管理器里显示的版本号应为 `1.1.9`，与 `.meta.js` 中的 `@version` 一致。
+- 想核对版本：脚本管理器里显示的版本号应为 `1.2`，与 `.meta.js` 中的 `@version` 一致。
 
 ## 发布新版本（维护流程）
 
 以后发新版，保持**同一分支、同一路径、同一文件名**，玩家的固定链接才不会失效：
 
 1. 在 `D:\Codex` 下用既有构建流程生成新的 `.user.js`（**不要**手工改字幕库，也不要重新生成数据库除非确实需要）。
-2. **提高** `@version`（例如 `1.1.9`），并同步脚本内 `const VERSION`。
+2. **提高** `@version`（例如 `1.2`），并同步脚本内 `const VERSION`。
 3. 确认 `@updateURL` / `@downloadURL` 仍指向本仓库 Raw 地址。
 4. **重新生成** `.meta.js`：内容必须是新版脚本完整元数据头的拷贝，`@version` 与 `.user.js` 完全一致。
 5. 在**同一次提交**里同时更新 `Tamacolle_CN_Subtitles.user.js` 和 `Tamacolle_CN_Subtitles.meta.js`，然后推送到 `main`。两者版本不一致会导致脚本管理器反复提示更新或判定失败。
@@ -110,14 +115,14 @@ v1.1.4 曾把匹配规则改成 `@match *://*/*`，想让脚本出现在更多 S
    - `node --check Tamacolle_CN_Subtitles.user.js` 通过；
    - 字幕条目数与 `audio_subtitle_sha256` 未被意外改动；
    - 入口网址判断仍在字幕初始化之前。
-7. 推送后匿名访问两个 Raw 地址核对内容与版本号。
+7. 推送后匿名访问两个 Raw 地址核对内容与版本号，再检查 Fastly 固定备用链接是否同步。
 
 ## 校验
 
-- 字幕库：2,608 条。与 v1.1.8 的 2,608 条字幕及时间轴一致。
+- 字幕库：2,608 条。与 v1.1.9 的 2,608 条字幕及时间轴一致。
 - 战斗负伤映射新增岩代。
 - v1.1.5 相对 v1.1.4 改了四处：`@match` 三条规则、`@version`、`const VERSION`、`DB_META` 说明里的版本号；其余逐字节未动（反向还原后与 v1.1.4 完全相同）。
 - `@match` 用 match-pattern 语义验证：10 条游戏网址匹配；30 条非游戏网址（GitHub、Google、YouTube、B 站、游戏主域的其它路径、相似/伪造域名、`http://`、`file://`、路径相似等）**全部不匹配**。
 - 入口守卫独立验证仍生效：游戏页放行，外站与 `http://` 拦截，且外站运行时零触碰页面能力。
 - 项目自带 `node --test source/runtime.test.cjs`：22/22 通过，包含入浴和预加载误弹字幕的回归测试。PC 和 iPhone 实机待复测。
-- 匿名访问（未登录、无 Cookie）两个 Raw 地址应返回脚本与元数据，版本号均为 `1.1.9`。
+- 匿名访问（未登录、无 Cookie）两个 Raw 地址应返回脚本与元数据，版本号均为 `1.2`。
