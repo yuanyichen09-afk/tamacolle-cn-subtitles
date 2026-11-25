@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         魂これ 中文字幕（Tamacolle CN Subtitles）
 // @namespace    https://nijitama.app/games/tamacolle/
-// @version      1.1.8
+// @version      1.1.9
 // @description  在《魂これ》网页版播放角色语音时叠加整条中文字幕；剧情/招募等原生对白界面默认不叠加。非官方，不修改游戏文件。
 // @author       DSH
 // @match        https://nijitama.app/games/tamacolle/*
@@ -51,7 +51,7 @@
   "verification_note": "整条字幕。入浴本次记录见 source/bath_review_v118.json。"
 };
 
-  const VERSION = '1.1.8';
+  const VERSION = '1.1.9';
   const LOG = '[tamacolle-subs]';
   const MP3_IN_URL = /\/(v_[a-z0-9]+_\d+(?:_\d+)?)\.mp3(?:[?#]|$)/i;
   const BARE_VOICE = /^(?:.*\/)?(v_[a-z0-9]+_\d+(?:_\d+)?)(?:\.mp3)?$/i;
@@ -181,14 +181,14 @@
       'transform-origin:center center',
       'box-sizing:border-box',
       'padding:10px 16px',
-      'border-radius:10px',
-      'background:rgba(12,12,14,0.74)',
-      'color:#fff',
-      'font-family:system-ui,-apple-system,"Hiragino Sans","Noto Sans SC","Microsoft YaHei",sans-serif',
-      'font-weight:600',
+      'background:transparent',
+      'color:#000',
+      'font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC","Noto Sans CJK SC",system-ui,sans-serif',
+      'font-weight:800',
       'line-height:1.45',
       'text-align:center',
-      'text-shadow:0 1px 2px rgba(0,0,0,0.9)',
+      'text-shadow:-1px -1px 0 #fffdf4, 0 -1px 0 #fffdf4, 1px -1px 0 #fffdf4, ' +
+        '-1px 0 0 #fffdf4, 1px 0 0 #fffdf4, -1px 1px 0 #fffdf4, 0 1px 0 #fffdf4, 1px 1px 0 #fffdf4',
       'white-space:pre-wrap',
       'word-break:break-word',
       'pointer-events:none',
